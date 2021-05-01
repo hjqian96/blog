@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta content="width=device-width, initial_scale=1.0, maximum_scale=1.0, user_scalable=0" name="viewport">
+<title>OMEGA</title>
+<!-- import custome css -->
+
+<link rel="stylesheet" href="../../css/main.css">
+
+<!-- use FontAwsome -->
+<link rel="stylesheet" href="/math/css/font-awesome.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/path/to/styles/vs.css">
+<script src="/path/to/highlight.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/math/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
+        <header class="header">
+    <div class="header-imag">
+        <img src="../images/mountain.jpg">
+    </div>
+
+    <div id="title">
+        <h1 id="blog-title">
+            <a>OMEGA</a>
+        </h1>
+
+        
+            <p id="tagline">
+                Write what you&#39;ve down and make your work available.
+            </p>
+        
+    </div>
+
+    <div id="navigation">
+        <ul id="nav-1">
+            
+            <li class="menu-item">
+                <a href="../../index.html" class="menu-item-link">Home</a>
+            </li>
+        
+            <li class="menu-item">
+                <a href="../../archives" class="menu-item-link">Archives</a>
+            </li>
+        
+            <li class="menu-item">
+                <a href="../../tags" class="menu-item-link">Tags</a>
+            </li>
+        
+        </ul>
+        <ul id="nav-2">
+            <li>
+                <a class="feed" title="Subscribe to feed">Subscribe</a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</header>
+        <div id='content'>
+            <div id="primary">
+                <article class="post">
+
+<div class="post">
+    
+    <div class="post-head">
+        
+        
+  
+    <h1 class="post-title">HPC 配置深度学习环境</h1>
+  
+
+        <span class="post-metadata"><time datetime="2020-10-02T21:13:59.000Z">2020-10-02</time>
+            in  
+            | Tags:   
+            | by Hongjiang Qian
+        </span>
+    </div>
+    
+        
+    <div id="article">
+        
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="Step-1-连接-HPC-中心-Linux-Mac-OS"><a href="#Step-1-连接-HPC-中心-Linux-Mac-OS" class="headerlink" title="Step 1 连接 HPC 中心 (Linux/Mac OS)"></a>Step 1 连接 HPC 中心 (Linux/Mac OS)</h3><p>在 Mac terminal 中运行以下的代码<br><code>ssh yournetid@login.storrs.hpc.uconn.edu</code><br>通常此时会要求输入密码。</p>
+<p>为了避免每次都输入很长的命令，我们可以自定义 ssh 别名<br><a id="more"></a></p>
+<pre class=" language-lang-python"><code class="language-lang-python">import time
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from tensorflow import keras
+import matplotlib.pyplot as plt
+
+get_ipython().run_line_magic('matplotlib', 'inline')
+get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'svg'")
+
+#set suppress to not use scientific counting
+np.set_printoptions(suppress=True)
+</code></pre>
+<pre class=" language-lang-bash"><code class="language-lang-bash">cd ~./ssh
+touch config  #如果这里没有config文件
+vim config  # 用Vim 编辑config文件
+</code></pre>
+<p>在 <code>vim config</code> 之后, 在 vim 编辑器写入一下代码</p>
+<pre class=" language-lang-python"><code class="language-lang-python">Host uconn-hpc  # the short name you want
+    Hostname login.storrs.hpc.uconn.edu
+    User hoq20002  #你的login id
+    ForwardAgent no
+</code></pre>
+<p>然后，就可以直接通过 <code>ssh uconn-hpc</code> 连接学校的 HPC 中心了。</p>
+<h3 id="Step-2-conda-配置Python环境"><a href="#Step-2-conda-配置Python环境" class="headerlink" title="Step 2 conda 配置Python环境"></a>Step 2 conda 配置Python环境</h3><p>下面以Deep_Filter项目为例</p>
+<pre class=" language-lang-Bash"><code class="language-lang-Bash">mkdir Deep_Filter
+cd Deep_Filter #单独建立一个folder后进入
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh  # download 最新的miniconda 包
+bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda
+
+module load cuda/10.1      #具体的version 需要参考学校 HPC 提供的 module, 可用 module avail 查看
+module load cudnn/7.6.5
+
+# 创建一个名为 pyGPUrtx 的 python 环境
+
+miniconda/bin/conda create -n pyGPUrtx python=3.8.3  
+source miniconda/bin/activate pyGPUrtx
+# 在激活 pyGPUrtx 之后就可以安装所需要的 python pacakage
+
+pip install tensorflow
+pip install keras
+pip install matplotlib
+pip install sklearn
+pip install pandas
+</code></pre>
+<p>基本按照上述操作就可以配置好深度学习所需要的环境。注意：不要在 login mode 下直接 pip 安装所需要的 package, 此时一般不会安装成功。最好就是先用 conda 创建自己的 python 环境, 再安装需要的包。</p>
+<h3 id="Step-3-Slurm-submit-job"><a href="#Step-3-Slurm-submit-job" class="headerlink" title="Step 3: Slurm submit job"></a>Step 3: Slurm submit job</h3><p>当我们配置好了 python 环境，我们就准备把写好的脚本提交到HPC (参考 Appendix 如何把脚本上传到HPC)。按照目前所了解的信息，HPC 中心都会要求用 slurm (workload manager) 提交任务。</p>
+<p><code>vim submit.sh # 创建并进入 submit.sh 文件</code></p>
+<pre class=" language-lang-Bash"><code class="language-lang-Bash">#在 vim 模式下编辑 submit.sh 的内容如下
+#！/bin/bash
+#SBATCH --partition=gpu_rtx  # 此处选的是gpu_rtx, 一般会提供四种partition: gpu, gpu_rtx, gpu_v100, gpu_gtx.
+#SBATCH --gres=gpu：1
+
+module load cuda/10.1
+module load cudnn/7.6.5
+source miniconda/bin/activate pyGPUrtx 
+
+python xxx.py
+</code></pre>
+<p>退出 vim  编辑器后输入以下命令提交任务</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">sbatch submit.sh #提交
+#上面命令运行后，会出现类似 slurm-xxxxx.out 
+# 比如: slurm-3764657.out
+
+cat slurm-3764657.out  # 查看结果
+</code></pre>
+<h3 id="Appendix-上传脚本至HPC"><a href="#Appendix-上传脚本至HPC" class="headerlink" title="Appendix: 上传脚本至HPC"></a>Appendix: 上传脚本至HPC</h3><ol>
+<li>FileZilla</li>
+<li>Github<br>比较友好，学习成本低的方式是直接使用 FileZilla。 如果对 Github 操作熟悉的可以直接用 Github 链接文件夹（Deep_Filter), 请转这篇文章。</li>
+</ol>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://sydney-informatics-hub.github.io/training.artemis.gpu/aio.html">Introduction to GPU computing on HPC</a></li>
+<li><a target="_blank" rel="noopener" href="https://wiki.hpc.uconn.edu/index.php/Main_Page">Storrs HPC Cluster</a></li>
+<li><a target="_blank" rel="noopener" href="http://jeremy9959.net/Math-5800-Spring-2020/Cluster.html">MATH-5800-Spring-2020</a></li>
+<li><a target="_blank" rel="noopener" href="https://ulhpc-tutorials.readthedocs.io/en/latest/beginners/">Getting Started on the HL  HPC platform</a></li>
+</ol>
+
+            
+    </div>
+
+    
+<div class="navi clearfix">
+  
+    <a href="/math/posts/a4a6adfd/" class="alignleft prev" title="Hexo Modernist 配置记录">Hexo Modernist 配置记录</a>
+  
+  
+    <a href="/math/posts/8d2e3aa6/" class="alignright next" title="Python 札记">Python 札记</a>
+  
+</div>
+
+    
+    
+    <div class="clearfix"></div>
+</div>
+
+</article>
+
+
+
+            </div>
+            <div id="secondary">
+                <div class="widget">
+    
+        
+  <div class="widget-wrap">
+    <h4>recent_posts</h4>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../c5346f32/">LaTeX Note</a>
+          </li>
+        
+          <li>
+            <a href="../a4a6adfd/">Hexo Modernist 配置记录</a>
+          </li>
+        
+          <li>
+            <a href="">HPC 配置深度学习环境</a>
+          </li>
+        
+          <li>
+            <a href="../8d2e3aa6/">Python 札记</a>
+          </li>
+        
+          <li>
+            <a href="../aeb99872/">The Perturbed Test Function Method</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+        
+        
+<div class="widget-wrap">
+  <h4 class="title">Categories</h4>
+  <div class="widget">
+  <ul class="entry">
+  
+    <li><a href="/math/categories/Probability/Inequality/">Inequality</a><small>1</small></li>
+  
+    <li><a href="/math/categories/Probability/">Probability</a><small>4</small></li>
+  
+    <li><a href="/math/categories/Stochastic-Calculus-Notes/">Stochastic Calculus Notes</a><small>3</small></li>
+  
+    <li><a href="/math/categories/Tech/">Tech</a><small>2</small></li>
+  
+    <li><a href="/math/categories/Weak-Convergence/">Weak Convergence</a><small>2</small></li>
+  
+  </ul>
+  </div>
+</div>
+
+        
+        
+<div class="widget-wrap">
+  <h4 class="title">Tag Cloud</h4>
+  <div class="entry">
+    <a href="../../tags/Chebyshev-s-Inequality/" style="font-size: 10px;">Chebyshev's Inequality</a> <a href="../../tags/Filtration/" style="font-size: 10px;">Filtration</a> <a href="../../tags/Gronwall-Inequality/" style="font-size: 10px;">Gronwall Inequality</a> <a href="../../tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="../../tags/Hitting-time/" style="font-size: 10px;">Hitting time</a> <a href="../../tags/Holder-s-Inequality/" style="font-size: 10px;">Holder's Inequality</a> <a href="../../tags/Integrable/" style="font-size: 10px;">Integrable</a> <a href="../../tags/It-hat-o-integral/" style="font-size: 10px;">It$\hat{o}$ integral</a> <a href="../../tags/Jesen-s-Inequality/" style="font-size: 10px;">Jesen's Inequality</a> <a href="../../tags/Lebesgue-Integral/" style="font-size: 10px;">Lebesgue Integral</a> <a href="../../tags/Lyapunov-s-Inequality/" style="font-size: 10px;">Lyapunov's Inequality</a> <a href="../../tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="../../tags/Minkowski-s-Inequality/" style="font-size: 10px;">Minkowski's Inequality</a> <a href="../../tags/Modernist/" style="font-size: 10px;">Modernist</a> <a href="../../tags/Optional-time/" style="font-size: 10px;">Optional time</a> <a href="../../tags/Perturbed-Test-Function-Method/" style="font-size: 10px;">Perturbed Test Function Method</a> <a href="../../tags/Random-Elements/" style="font-size: 10px;">Random Elements</a> <a href="../../tags/Random-Variable/" style="font-size: 10px;">Random Variable</a> <a href="../../tags/Stochastic-Processes/" style="font-size: 10px;">Stochastic Processes</a> <a href="../../tags/Stopping-time/" style="font-size: 10px;">Stopping time</a> <a href="../../tags/Tightness/" style="font-size: 10px;">Tightness</a> <a href="../../tags/Uniformly-Integrable/" style="font-size: 10px;">Uniformly Integrable</a> <a href="../../tags/Weak-Convergence/" style="font-size: 10px;">Weak Convergence</a> <a href="../../tags/congvergence-in-probaility/" style="font-size: 10px;">congvergence in probaility</a> <a href="../../tags/convergence-almost-sure/" style="font-size: 10px;">convergence almost sure</a> <a href="../../tags/convergence-in-distribution/" style="font-size: 10px;">convergence in distribution</a> <a href="../../tags/convergence-in-mean-of-order-p/" style="font-size: 10px;">convergence in mean of order p</a> <a href="../../tags/convergence-with-probability-one/" style="font-size: 10px;">convergence with probability one</a> <a href="../../tags/perturbed-test-function-method/" style="font-size: 10px;">perturbed test function method</a> <a href="../../tags/weak-convergence/" style="font-size: 10px;">weak convergence</a>
+  </div>
+</div>
+
+        
+</div>
+  
+            </div>
+        </div>
+        <div id="primary">
+    <div id='footer'>
+      &copy; 2021 Hongjiang Qian<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <div>
+</div>
+
+    </div>
+    
+<script src="../../js/main.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
+

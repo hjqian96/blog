@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta content="width=device-width, initial_scale=1.0, maximum_scale=1.0, user_scalable=0" name="viewport">
+<title>OMEGA</title>
+<!-- import custome css -->
+
+<link rel="stylesheet" href="../../css/main.css">
+
+<!-- use FontAwsome -->
+<link rel="stylesheet" href="/math/css/font-awesome.css" media="screen" type="text/css">
+<link rel="stylesheet" href="/path/to/styles/vs.css">
+<script src="/path/to/highlight.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/math/css/prism.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
+        <header class="header">
+    <div class="header-imag">
+        <img src="../images/mountain.jpg">
+    </div>
+
+    <div id="title">
+        <h1 id="blog-title">
+            <a>OMEGA</a>
+        </h1>
+
+        
+            <p id="tagline">
+                Write what you&#39;ve down and make your work available.
+            </p>
+        
+    </div>
+
+    <div id="navigation">
+        <ul id="nav-1">
+            
+            <li class="menu-item">
+                <a href="../../index.html" class="menu-item-link">Home</a>
+            </li>
+        
+            <li class="menu-item">
+                <a href="../../archives" class="menu-item-link">Archives</a>
+            </li>
+        
+            <li class="menu-item">
+                <a href="../../tags" class="menu-item-link">Tags</a>
+            </li>
+        
+        </ul>
+        <ul id="nav-2">
+            <li>
+                <a class="feed" title="Subscribe to feed">Subscribe</a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</header>
+        <div id='content'>
+            <div id="primary">
+                <article class="post">
+
+<div class="post">
+    
+    <div class="post-head">
+        
+        
+  
+    <h1 class="post-title">Various Kinds of Convergence of Sequence of Random Variables</h1>
+  
+
+        <span class="post-metadata"><time datetime="2019-09-01T13:36:07.000Z">2019-09-01</time>
+            in 
+    <a class="categories-link" href="../../categories/Probability/">Probability</a>
+ 
+            | Tags: 
+    <a class="tags-none-link" href="../../tags/congvergence-in-probaility/" rel="tag">congvergence in probaility</a>, <a class="tags-none-link" href="../../tags/convergence-almost-sure/" rel="tag">convergence almost sure</a>, <a class="tags-none-link" href="../../tags/convergence-in-distribution/" rel="tag">convergence in distribution</a>, <a class="tags-none-link" href="../../tags/convergence-in-mean-of-order-p/" rel="tag">convergence in mean of order p</a>, <a class="tags-none-link" href="../../tags/convergence-with-probability-one/" rel="tag">convergence with probability one</a>
+  
+            | by Hongjiang Qian
+        </span>
+    </div>
+    
+        
+    <div id="article">
+        
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>This post will states various kinds of convergence of sequence of random variables, i.e. convergence almost sure(w.p.1), convergence in probability, convergence in distribution and convergence in mean of order p. At first, we will state definitions for all above kinds of convergence and then we will see their relations. Secondly, Cauchy criterions for almost sure convergence, convergence in probability and convergence in mean $p$-th power will be demonstrated.</p>
+<p>Let $\{\xi_n\},\xi$ be a sequence of random variables on $(\Omega, \mathcal{F},P)$</p>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b> Definitions: </b> <br></p>
+<p>(1). $\xi_n$ converges to $\xi$ in probability denoted as $\xi_n \stackrel{p}{\rightarrow} \xi$: if for every $\varepsilon&gt;0$, </p>
+<script type="math/tex; mode=display">P\{\lvert\xi_n-\xi\rvert>\varepsilon\}\rightarrow 0,\, n\rightarrow \infty. \tag{1}</script><p>(2). $\xi_n$ converges to $\xi$ almost surely (with probability 1) denoted as $\xi_n\rightarrow \xi$ (P-a.s.) or $\xi_n\stackrel{a.s}{\rightarrow}\xi$, if </p>
+<script type="math/tex; mode=display">P\{w: \xi_n \nrightarrow \xi\}=0.\tag{2}</script><p>(3). $\xi_n$ converges to $\xi$ in mean of order $p$ denoted as $\xi_n \stackrel{L^p}{\rightarrow} \xi$ if</p>
+<script type="math/tex; mode=display">E|\xi_n-\xi|^p\rightarrow 0,\quad n\rightarrow \infty.\tag{3}</script><p>(4). $\xi_n$ converges to $\xi$ in distribution denoted as $\xi_n \stackrel{d}{\rightarrow}\xi$, if </p>
+<script type="math/tex; mode=display">
+    Ef(\xi_n)\rightarrow Ef(\xi),\quad n\rightarrow \infty.\tag{4}</script><p>for every bounded continous function $f=f(x)$.</p>
+</div>
+<a id="more"></a>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Theorem 1</b><br><br>    (a) A necessary and sufficient condition that $\xi_n\rightarrow \xi(P-a.s.)$ is that <script type="math/tex">P\{\sup_{k\geq n}|\xi_k-\xi|\geq \varepsilon\} \rightarrow 0, \quad n\rightarrow \infty.\tag{5}</script><br>    for every $\varepsilon &gt;0$.<br><br>    (b) The sequence $\{\xi_n\}_{n\geq 1}$ is fundamental with probability 1 if and only if </p>
+<script type="math/tex; mode=display">P\{ \sup_{k\geq n, l\geq n}|\xi_k-\xi_l|\geq \varepsilon \} \rightarrow 0, \quad n\rightarrow \infty\tag{6}</script><p>​    for every $\varepsilon\rightarrow 0$. Or equivalently,<br>​    <script type="math/tex">P\{\sup_{k\geq 0} |\xi_{n+k}-\xi_n|\geq \varepsilon\}\rightarrow 0, \quad n \rightarrow \infty.\tag{7}</script></p>
+</div>
+<p>Proof:</p>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Corollary 1</b><br><br> Since</p>
+<script type="math/tex; mode=display">
+ P\{\sup_{k\geq n} |\xi_k-\xi|\geq \varepsilon\}=P\{\cup_{k\geq n}(|\xi_k-\xi|\geq \varepsilon)\} \leq \sum_{k\geq n}P\{|\xi_k-\xi|\geq \varepsilon\}</script><p> a sufficient condition for $\xi_n\stackrel{a.s.}{\rightarrow} \xi$ is that</p>
+<script type="math/tex; mode=display">\sum_{k=1}^{\infty} P\{|\xi_k-\xi|\geq \varepsilon\}< \infty</script><p> is satisfied for every $\varepsilon&gt;0$.</p>
+</div>
+<p>Let $A_1, A_2, A_3,\cdots$ be a sequence of events in $\mathcal{F}$. Also we let $\{A_n, \text{i.o.}\}$ denote the event of $\varlimsup A_n$, then we have the following<br></p>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Borel-Cantelli Lemma</b><br><br>    (1) If $\sum P(A_n)&lt;\infty$, then $P\{A_n \text{ i.o.}\}=0.$<br>    (2) If $\sum P(A_n)=\infty$ and $A_1, A_2,\cdots$ are independent, then $P\{A_n \text{ i.o.}\}=1.$</p>
+</div>
+<p>Proof:<br></p>
+<ul>
+<li>According to definition, we have<script type="math/tex; mode=display">
+\{A_n,\text{i.o.}\}=\varlimsup A_n=\cap_{n=1}^{\infty}\cup_{k\geq n} A_k.</script>Therefore,<script type="math/tex; mode=display">
+P\{A_n,\text{i.o.}\}=P\left\{\cap_{n=1}^{\infty}\cup_{k\geq n} A_k \right\}=\lim P\left(\cup_{k\geq n}\right) \leq \lim\sum_{k\geq n} P(A_k)</script>Then we have (a).</li>
+<li>If $A_1, A_2, A_3,\cdots$ are independent, then $\bar{A_1},\bar{A_2},\cdots$ are independent. Hence for $N\geq n$, we have <script type="math/tex; mode=display">
+P\left( \cap_{k=n}^{N}\bar{A_k}\right)=\Pi_{k=n}^{N}P(\bar{A_k})</script>then we can get<script type="math/tex; mode=display">
+P\left( \cap_{k=n}^{\infty}\bar{A_k}\right)=\Pi_{k=n}^{\infty}P(\bar{A_k})</script>Since $\log(1-x)\leq -x,\,0\leq x\leq 1$, then we are able to obtain<script type="math/tex; mode=display">
+\log\Pi_{k=n}^{\infty}[1-P(A_k)]=\sum_{k=n}^{\infty}\log[1-P(A_k)]\leq -\sum_{k=n}^{\infty} P(A_k)=-\infty.</script>Therefore, we have $P\left(\cap_{k=n}^{\infty}\bar{A_k}\right)=0$ for all n, then $P(A_n,\text{i.o.})=1$.</li>
+</ul>
+<p>At the begining of this post, we demonstrates definitions of various kinds of convergence in Proability theory. Now we are going to see what are relationships between them.<br></p>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Theorem 2</b><br><br>    We have the following implications for various types of convergence:<br></p>
+<script type="math/tex; mode=display">
+\xi_n \stackrel{a.s.}{\rightarrow}\xi \implies \xi_n\stackrel{P}{\rightarrow} \xi,\tag{9}</script><script type="math/tex; mode=display">
+\xi_n\stackrel{L^p}{\rightarrow}\xi \implies \xi_n\stackrel{P}{\rightarrow}\xi,\quad p>0,\tag{10}</script><script type="math/tex; mode=display">
+\xi_n\stackrel{P}{\rightarrow}\xi \implies \xi_n\stackrel{d}{\rightarrow}\xi.\tag{11}</script></div>
+<p>Proof:<br></p>
+<ul>
+<li>In order to prove $\eqref{9}$, we are going to make use of Corollary 1.</li>
+</ul>
+<p>As we known in analysis, every fundamental sequence is convergent, i.e. Cauchy criterion. Similarily, we are going to establish Cauchy criterion for the convergence of a sequence of random variables. The rest parts are about Cauchy criterion for almost sure convergence, convergence in probability and convergence in mean $p$-th power.</p>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Theorem 3</b>(Cauchy Criterion for Almost Sure Convergence)<br></p>
+<script type="math/tex; mode=display">
+\xi_n\stackrel{a.s.}{\rightarrow} \xi \Leftrightarrow \{\xi_n\}_{n\geq 1} \text{ is fundamental with probability 1} \tag{12}</script></div>
+<p>Proof:<br></p>
+<ul>
+<li><p>“$\Rightarrow$” If $\xi_n\stackrel{a.s.}{\rightarrow}\xi$, then according to Theorem 1, we have</p>
+<script type="math/tex; mode=display">
+\sup_{k\geq n,l\geq n}|\xi_k-\xi_l|\leq \sup_{k\geq n}|\xi_k-\xi|+\sup_{l\geq n}|\xi_l-\xi|</script><p>Therefore, we have</p>
+<script type="math/tex; mode=display">
+P\{\sup_{k\geq n,l\geq n}|\xi_k-\xi_l|\geq \varepsilon\}\leq P\{\sup_{k\geq n}|\xi_k-\xi|\geq \frac{\varepsilon}{2}\}+P\{\sup_{l\geq n}|\xi_l-\xi|\geq \frac{\varepsilon}{2}\} \rightarrow 0</script><p>Hence we get $\{\xi_n\}_{n\geq 1}$ is fundamental w.p.1</p>
+</li>
+<li><p>“$\Leftarrow$” Let $\{\xi_n\}_{n\geq 1}$ be fundamental with probability 1, then let $N=\{w: \xi_n(w)\text{ is not fundamental}\}$. Therefore for every $w\in \Omega \setminus N$, $(\xi_n(w))$ is fundamental, then by Cauchy’s theorem for real numbers, we get $\lim \xi_n(w)$ exists. Finally, we define</p>
+<script type="math/tex; mode=display">
+\xi(w)=
+\begin{cases}
+  \lim \xi_n(w), \quad w\in \Omega\setminus N,\\
+  0, \quad w\in N
+\end{cases}</script><p>Hence we could get that $\xi(w)$ is a random variable and $\xi_n\stackrel{a.s.}{\rightarrow}\xi$.</p>
+</li>
+</ul>
+<p>Before we proceed to Cauchy criterion for convergence in probability, we demonstate a theorem about subsequence. In real analysis, we know that a fundamental sequence of real numbers or a Cauchy sequence has a convergent subsequence. Here we still have similar results, which is the following theorem.</p>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Theorem 5</b><br><br>    IF the sequence $(\xi_n)$ is fundamental in probability, then there exists a subsequence $(\xi_{n_k})$ is fundamental w.p.1. i.e.</p>
+<script type="math/tex; mode=display">
+    \xi_n\stackrel{p}{\rightarrow}\xi \implies \exists\, \xi_{n_k} \text{ s.t. } \xi_{n_k}\stackrel{a.s.}{\rightarrow}\xi.</script><p>In the above theorem, we take advantage of Cauchy criterion for convergence in probability which we will state later.</p>
+</div>
+<p>Proof:<br><br>By using Theorem 4, it suffices to prove that $\xi_{n_k}\stackrel{a.s.}{\rightarrow}\xi$. Since $(\xi_n)$ is fundamental in probability, we have </p>
+<script type="math/tex; mode=display">
+\lim_{n,m\rightarrow \infty} P(|\xi_n-\xi_m|>\eta)=0.</script><p>Then $\forall\,k&gt;0, \exists \,n_k&gt;0, \text{s.t.} \forall\, s\geq n_k, t\geq n_k$,</p>
+<script type="math/tex; mode=display">
+P(|\xi_s-\xi_t|>2^{-k})\leq 2^{-k}.</script><p>Especially, let $s=n_{k+1}, t=n_k$, then we have $P(|\xi_{n_{k+1}}-\xi_{n_k}|&gt;2^{-k})\leq 2^{-k}$. Therefore, we have</p>
+<script type="math/tex; mode=display">\sum_{k} P(|\xi_{n_{k+1}}-\xi_{n_k}|>2^{-k})<\sum_{k}2^{-k}<\infty.</script><p>By Borel-Cantelli lemma, $P(|\xi_{n_{k+1}}-\xi_{n_k}|&gt;2^{-k} \text{i.o.})=0$, i.e. the event $\{|\xi_{n_{k+1}}-\xi_{n_k}|\leq2^{-k}\}$ has probability 1. Hence </p>
+<script type="math/tex; mode=display">\sum_{k=1}^{\infty}|\xi_{n_{k+1}}-\xi_{n_k}|\leq \sum_{k=1}^{\infty}2^{-k} <\infty.</script><p>Let $N=\{w: \sum_{k=1}^{\infty}|\xi_{n_{k+1}}-\xi_{n_k}|=\infty\}$, then define</p>
+<script type="math/tex; mode=display">
+\xi(w)=
+\begin{cases}
+    \xi_{n_1}(w)+\sum_{k=1}^{\infty}|\xi_{n_{k+1}}-\xi_{n_k}|, \quad w\in \Omega\setminus N, \\
+    0, \quad w\in N
+\end{cases}</script><p>Therefore we are able to attain $\xi_{n_k}\stackrel{a.s.}{\rightarrow}\xi$. $\quad\quad$&diams;</p>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Theorem 6</b>( Cauchy Criterion for convergence in Probability)<br></p>
+<p>​    <script type="math/tex">\xi_n\stackrel{p}{\rightarrow}\xi\Leftrightarrow (\xi_n) \text{ is fundamental in probability}</script>.</p>
+</div>
+<p>Proof:<br></p>
+<ul>
+<li>“$\Leftarrow$” If $\xi_n\stackrel{p}{\rightarrow}\xi$, then<script type="math/tex; mode=display">
+P\{|\xi_n-\xi_m|\geq \varepsilon\} \leq P\{|\xi_n-\xi|\geq \frac{\varepsilon}{2}\}+P\{|\xi_n-\xi|\geq \frac{\varepsilon}{2}\} \rightarrow 0</script>Therefore $(\xi_n)$ is fundamental in probability</li>
+<li>“$\Rightarrow$” If $(\xi_n)$ is fundamental in probability, then there exists a sequence $(\xi_{n_k})$ and a random variable such that $\xi_{n_k}\stackrel{a.s.}{\rightarrow}\xi$, then $\xi_{n_k}\stackrel{p}{\rightarrow}\xi$. Therefore,<script type="math/tex; mode=display">
+P\{|\xi_n-\xi|\geq \varepsilon\}\leq P\{|\xi_n-\xi_{n_k}|\geq \frac{\varepsilon}{2}\}+P\{|\xi_{n_k}-\xi|\geq \frac{\varepsilon}{2}\} \rightarrow 0.</script></li>
+</ul>
+
+            
+    </div>
+
+    
+<div class="navi clearfix">
+  
+    <a href="/math/posts/6b27437e/" class="alignleft prev" title="A Small Summary for Construction of It$\hat{o}$ Integral">A Small Summary for Construction of It$\hat{o}$ Integral</a>
+  
+  
+    <a href="/math/posts/5abe79c7/" class="alignright next" title="Random Variable and Random Elements">Random Variable and Random Elements</a>
+  
+</div>
+
+    
+    
+    <div class="clearfix"></div>
+</div>
+
+</article>
+
+
+
+            </div>
+            <div id="secondary">
+                <div class="widget">
+    
+        
+  <div class="widget-wrap">
+    <h4>recent_posts</h4>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../c5346f32/">LaTeX Note</a>
+          </li>
+        
+          <li>
+            <a href="../a4a6adfd/">Hexo Modernist 配置记录</a>
+          </li>
+        
+          <li>
+            <a href="../8ac8ca6d/">HPC 配置深度学习环境</a>
+          </li>
+        
+          <li>
+            <a href="../8d2e3aa6/">Python 札记</a>
+          </li>
+        
+          <li>
+            <a href="../aeb99872/">The Perturbed Test Function Method</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+        
+        
+<div class="widget-wrap">
+  <h4 class="title">Categories</h4>
+  <div class="widget">
+  <ul class="entry">
+  
+    <li><a href="/math/categories/Probability/Inequality/">Inequality</a><small>1</small></li>
+  
+    <li><a href="/math/categories/Probability/">Probability</a><small>4</small></li>
+  
+    <li><a href="/math/categories/Stochastic-Calculus-Notes/">Stochastic Calculus Notes</a><small>3</small></li>
+  
+    <li><a href="/math/categories/Tech/">Tech</a><small>2</small></li>
+  
+    <li><a href="/math/categories/Weak-Convergence/">Weak Convergence</a><small>2</small></li>
+  
+  </ul>
+  </div>
+</div>
+
+        
+        
+<div class="widget-wrap">
+  <h4 class="title">Tag Cloud</h4>
+  <div class="entry">
+    <a href="../../tags/Chebyshev-s-Inequality/" style="font-size: 10px;">Chebyshev's Inequality</a> <a href="../../tags/Filtration/" style="font-size: 10px;">Filtration</a> <a href="../../tags/Gronwall-Inequality/" style="font-size: 10px;">Gronwall Inequality</a> <a href="../../tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="../../tags/Hitting-time/" style="font-size: 10px;">Hitting time</a> <a href="../../tags/Holder-s-Inequality/" style="font-size: 10px;">Holder's Inequality</a> <a href="../../tags/Integrable/" style="font-size: 10px;">Integrable</a> <a href="../../tags/It-hat-o-integral/" style="font-size: 10px;">It$\hat{o}$ integral</a> <a href="../../tags/Jesen-s-Inequality/" style="font-size: 10px;">Jesen's Inequality</a> <a href="../../tags/Lebesgue-Integral/" style="font-size: 10px;">Lebesgue Integral</a> <a href="../../tags/Lyapunov-s-Inequality/" style="font-size: 10px;">Lyapunov's Inequality</a> <a href="../../tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="../../tags/Minkowski-s-Inequality/" style="font-size: 10px;">Minkowski's Inequality</a> <a href="../../tags/Modernist/" style="font-size: 10px;">Modernist</a> <a href="../../tags/Optional-time/" style="font-size: 10px;">Optional time</a> <a href="../../tags/Perturbed-Test-Function-Method/" style="font-size: 10px;">Perturbed Test Function Method</a> <a href="../../tags/Random-Elements/" style="font-size: 10px;">Random Elements</a> <a href="../../tags/Random-Variable/" style="font-size: 10px;">Random Variable</a> <a href="../../tags/Stochastic-Processes/" style="font-size: 10px;">Stochastic Processes</a> <a href="../../tags/Stopping-time/" style="font-size: 10px;">Stopping time</a> <a href="../../tags/Tightness/" style="font-size: 10px;">Tightness</a> <a href="../../tags/Uniformly-Integrable/" style="font-size: 10px;">Uniformly Integrable</a> <a href="../../tags/Weak-Convergence/" style="font-size: 10px;">Weak Convergence</a> <a href="../../tags/congvergence-in-probaility/" style="font-size: 10px;">congvergence in probaility</a> <a href="../../tags/convergence-almost-sure/" style="font-size: 10px;">convergence almost sure</a> <a href="../../tags/convergence-in-distribution/" style="font-size: 10px;">convergence in distribution</a> <a href="../../tags/convergence-in-mean-of-order-p/" style="font-size: 10px;">convergence in mean of order p</a> <a href="../../tags/convergence-with-probability-one/" style="font-size: 10px;">convergence with probability one</a> <a href="../../tags/perturbed-test-function-method/" style="font-size: 10px;">perturbed test function method</a> <a href="../../tags/weak-convergence/" style="font-size: 10px;">weak convergence</a>
+  </div>
+</div>
+
+        
+</div>
+  
+            </div>
+        </div>
+        <div id="primary">
+    <div id='footer'>
+      &copy; 2021 Hongjiang Qian<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <div>
+</div>
+
+    </div>
+    
+<script src="../../js/main.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
+
