@@ -1,0 +1,53 @@
+<article class="<%= post.layout %>">
+
+<div class="post">
+    <% if (theme.post_head_color) { %>
+    <div class="post-head-color">
+        <div class="date-wrap">
+            <span class="date-day">
+                <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, theme.date_day_format) %></time></span>
+            <span class="date-month">
+                <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, theme.date_month_format) %></time></span>
+        </div>
+        <div class="title-wrap">
+            <% if (post.layout != 'page'){ %>
+            <h1> <%- partial('post/title') %></h1>
+            <span class="post-metadata"><time datetime="<%= date_xml(post.date) %>"><%= date(post.date, config.date_format) %></time>
+                in <%- partial('post/category') %> 
+                | Tags: <%- partial('post/tag') %>  
+                | by <%= config.author %>
+            </span>
+            <% } %>
+        </div>
+    </div>
+    <% } else{%>
+    <div class="post-head">
+        <% if (post.layout != 'page'){ %>
+        <%- partial('post/title') %>
+        <span class="post-metadata"><time datetime="<%= date_xml(post.date) %>"><%= date(post.date, config.date_format) %></time>
+            in <%- partial('post/category') %> 
+            | Tags: <%- partial('post/tag') %>  
+            | by <%= config.author %>
+        </span>
+    </div>
+    <%} %>
+    <%}%>    
+    <div id="article">
+        <% if (post.excerpt && index){ %>
+            <%- post.excerpt %>
+            <% } else { %>
+            <%- post.content %>
+            <% } %>
+    </div>
+
+    <%- partial('post/navi') %>
+    
+    <% if(post.comment && config.disqus_shortname){%>
+    <%- partial('post/comment')%>
+    <% } %>
+    <div class="clearfix"></div>
+</div>
+
+</article>
+
+

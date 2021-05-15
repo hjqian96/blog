@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<%- partial('_partial/head')%>
+<body>
+    <div id="wrapper">
+        <%- partial('_partial/header')%>
+        <div id='content'>
+            <div id="primary">
+                <%- body %>
+            </div>
+            <div id="secondary">
+                <%- partial('_partial/sidebar')%>  
+            </div>
+        </div>
+        <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+    </div>
+    <%- js('js/main.js') %>
+</body>
+</html>
+

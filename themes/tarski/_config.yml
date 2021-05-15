@@ -1,0 +1,28 @@
+title: Tarski
+subtitle: Custom Hexo theme
+
+author: Hongjiang Qian
+
+menu:
+  Home: /math/
+  Archives: /math/archives
+  Tags: /math/tags
+
+root_url: /math/
+
+links:
+  github: https://github.com
+
+sidebar: right
+
+post_head_color: false
+
+widgets:
+- recent_posts
+- category
+- tagcloud
+
+mathjax: true
+
+date_day_format: D
+date_month_format: MMM
