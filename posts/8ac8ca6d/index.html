@@ -83,64 +83,72 @@
         
             <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="Step-1-连接-HPC-中心-Linux-Mac-OS"><a href="#Step-1-连接-HPC-中心-Linux-Mac-OS" class="headerlink" title="Step 1 连接 HPC 中心 (Linux/Mac OS)"></a>Step 1 连接 HPC 中心 (Linux/Mac OS)</h3><p>在 Mac terminal 中运行以下的代码<br><code>ssh yournetid@login.storrs.hpc.uconn.edu</code><br>通常此时会要求输入密码。</p>
 <p>为了避免每次都输入很长的命令，我们可以自定义 ssh 别名<br><span id="more"></span></p>
-<pre class="language-python" data-language="python"><code class="language-python">import time
+<pre class=" language-lang-python"><code class="language-lang-python">import time
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 from tensorflow import keras
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic(&#39;matplotlib&#39;, &#39;inline&#39;)
-get_ipython().run_line_magic(&#39;config&#39;, &quot;InlineBackend.figure_format &#x3D; &#39;svg&#39;&quot;)
+get_ipython().run_line_magic('matplotlib', 'inline')
+get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'svg'")
 
 #set suppress to not use scientific counting
-np.set_printoptions(suppress&#x3D;True)</code></pre>
-<pre class="language-bash" data-language="bash"><code class="language-bash">cd ~.&#x2F;ssh
+np.set_printoptions(suppress=True)
+</code></pre>
+<pre class=" language-lang-bash"><code class="language-lang-bash">cd ~./ssh
 touch config  #如果这里没有config文件
-vim config  # 用Vim 编辑config文件</code></pre>
+vim config  # 用Vim 编辑config文件
+</code></pre>
 <p>在 <code>vim config</code> 之后, 在 vim 编辑器写入一下代码</p>
-<pre class="language-python" data-language="python"><code class="language-python">Host uconn-hpc  # the short name you want
+<pre class=" language-lang-python"><code class="language-lang-python">Host uconn-hpc  # the short name you want
     Hostname login.storrs.hpc.uconn.edu
     User hoq20002  #你的login id
-    ForwardAgent no</code></pre>
+    ForwardAgent no
+</code></pre>
 <p>然后，就可以直接通过 <code>ssh uconn-hpc</code> 连接学校的 HPC 中心了。</p>
-<h3 id="Step-2-conda-配置Python环境"><a href="#Step-2-conda-配置Python环境" class="headerlink" title="Step 2 conda 配置Python环境"></a>Step 2 conda 配置Python环境</h3><p>下面以Deep_Filter项目为例<br><pre class="language-Bash" data-language="Bash"><code class="language-Bash">mkdir Deep_Filter
+<h3 id="Step-2-conda-配置Python环境"><a href="#Step-2-conda-配置Python环境" class="headerlink" title="Step 2 conda 配置Python环境"></a>Step 2 conda 配置Python环境</h3><p>下面以Deep_Filter项目为例</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">mkdir Deep_Filter
 cd Deep_Filter #单独建立一个folder后进入
-wget https:&#x2F;&#x2F;repo.anaconda.com&#x2F;miniconda&#x2F;Miniconda3-latest-Linux-x86_64.sh  # download 最新的miniconda 包
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh  # download 最新的miniconda 包
 bash Miniconda3-latest-Linux-x86_64.sh -b -p miniconda
 
-module load cuda&#x2F;10.1      #具体的version 需要参考学校 HPC 提供的 module, 可用 module avail 查看
-module load cudnn&#x2F;7.6.5
+module load cuda/10.1      #具体的version 需要参考学校 HPC 提供的 module, 可用 module avail 查看
+module load cudnn/7.6.5
 
 # 创建一个名为 pyGPUrtx 的 python 环境
 
-miniconda&#x2F;bin&#x2F;conda create -n pyGPUrtx python&#x3D;3.8.3  
-source miniconda&#x2F;bin&#x2F;activate pyGPUrtx
+miniconda/bin/conda create -n pyGPUrtx python=3.8.3  
+source miniconda/bin/activate pyGPUrtx
 # 在激活 pyGPUrtx 之后就可以安装所需要的 python pacakage
 
 pip install tensorflow
 pip install keras
 pip install matplotlib
 pip install sklearn
-pip install pandas</code></pre><br>基本按照上述操作就可以配置好深度学习所需要的环境。注意：不要在 login mode 下直接 pip 安装所需要的 package, 此时一般不会安装成功。最好就是先用 conda 创建自己的 python 环境, 再安装需要的包。</p>
+pip install pandas
+</code></pre>
+<p>基本按照上述操作就可以配置好深度学习所需要的环境。注意：不要在 login mode 下直接 pip 安装所需要的 package, 此时一般不会安装成功。最好就是先用 conda 创建自己的 python 环境, 再安装需要的包。</p>
 <h3 id="Step-3-Slurm-submit-job"><a href="#Step-3-Slurm-submit-job" class="headerlink" title="Step 3: Slurm submit job"></a>Step 3: Slurm submit job</h3><p>当我们配置好了 python 环境，我们就准备把写好的脚本提交到HPC (参考 Appendix 如何把脚本上传到HPC)。按照目前所了解的信息，HPC 中心都会要求用 slurm (workload manager) 提交任务。</p>
 <p><code>vim submit.sh # 创建并进入 submit.sh 文件</code></p>
-<pre class="language-Bash" data-language="Bash"><code class="language-Bash">#在 vim 模式下编辑 submit.sh 的内容如下
-#！&#x2F;bin&#x2F;bash
-#SBATCH --partition&#x3D;gpu_rtx  # 此处选的是gpu_rtx, 一般会提供四种partition: gpu, gpu_rtx, gpu_v100, gpu_gtx.
-#SBATCH --gres&#x3D;gpu：1
+<pre class=" language-lang-bash"><code class="language-lang-bash">#在 vim 模式下编辑 submit.sh 的内容如下
+#！/bin/bash
+#SBATCH --partition=gpu_rtx  # 此处选的是gpu_rtx, 一般会提供四种partition: gpu, gpu_rtx, gpu_v100, gpu_gtx.
+#SBATCH --gres=gpu：1
 
-module load cuda&#x2F;10.1
-module load cudnn&#x2F;7.6.5
-source miniconda&#x2F;bin&#x2F;activate pyGPUrtx 
+module load cuda/10.1
+module load cudnn/7.6.5
+source miniconda/bin/activate pyGPUrtx 
 
-python xxx.py</code></pre>
+python xxx.py
+</code></pre>
 <p>退出 vim  编辑器后输入以下命令提交任务</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">sbatch submit.sh #提交
+<pre class=" language-lang-bash"><code class="language-lang-bash">sbatch submit.sh #提交
 #上面命令运行后，会出现类似 slurm-xxxxx.out 
 # 比如: slurm-3764657.out
 
-cat slurm-3764657.out  # 查看结果</code></pre>
+cat slurm-3764657.out  # 查看结果
+</code></pre>
 <h3 id="Appendix-上传脚本至HPC"><a href="#Appendix-上传脚本至HPC" class="headerlink" title="Appendix: 上传脚本至HPC"></a>Appendix: 上传脚本至HPC</h3><ol>
 <li>FileZilla</li>
 <li>Github<br>比较友好，学习成本低的方式是直接使用 FileZilla。 如果对 Github 操作熟悉的可以直接用 Github 链接文件夹（Deep_Filter), 请转这篇文章。</li>
@@ -252,23 +260,8 @@ cat slurm-3764657.out  # 查看结果</code></pre>
 
     </div>
     
-<script src="../../js/main.js"></script>
+<script src="../../js/main.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
 
