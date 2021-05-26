@@ -14,51 +14,50 @@
 <script src="/path/to/highlight.min.js"></script>
 
 <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 5.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism.css" type="text/css"></head>
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
         <header class="header">
     <div class="header-imag">
-        <img src="images/mountain.jpg">
+        <!-- cannot use html syntaxt to insert images, need to use image_tag (see hexo) -->
+        <img src="../../images/mountain.jpg">
     </div>
-
     <div id="title">
         <h1 id="blog-title">
-            <a>OMEGA</a>
-        </h1>
-
-        
-            <p id="tagline">
-                Write what you&#39;ve down and make your work available.
-            </p>
-        
-    </div>
-
-    <div id="navigation">
-        <ul id="nav-1">
-            
-            <li class="menu-item">
-                <a href="../../index.html" class="menu-item-link">Home</a>
-            </li>
-        
-            <li class="menu-item">
-                <a href="../../blog/archives" class="menu-item-link">Archives</a>
-            </li>
-        
-            <li class="menu-item">
-                <a href="../../blog/tags" class="menu-item-link">Tags</a>
-            </li>
-        
-        </ul>
-        <ul id="nav-2">
-            <li>
-                <a class="feed" title="Subscribe to feed">Subscribe</a>
-            </li>
-        </ul>
-        <div class="clearfix"></div>
-    </div>
-    <div class="clearfix"></div>
-</header>
+                    <a>OMEGA</a>
+                </h1>
+                
+                <p id="tagline">
+                    Write what you&#39;ve down and make your work available.
+                        
+                    </p>
+                    
+            </div>
+            <div id="navigation">
+                <ul id="nav-1">
+                    
+                        <li class="menu-item">
+                            <a href="../../index.html" class="menu-item-link">Home</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a href="../../blog/archives" class="menu-item-link">Archives</a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a href="../../blog/tags" class="menu-item-link">Tags</a>
+                        </li>
+                    
+                </ul>
+                <ul id="nav-2">
+                    <li>
+                        <a class="feed" title="Subscribe to feed">Subscribe</a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </header>
         <div id='content'>
             <div id="primary">
                 <article class="post">
@@ -184,8 +183,23 @@
 
     </div>
     
-<script src="../../js/main.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="../../js/main.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
 
