@@ -138,6 +138,7 @@ body .feed {
 -------------------------------------*/
 p {
     margin: 0 0 1em 0;
+    font-size: 13px;
 }
 
 blockquote {
@@ -227,6 +228,7 @@ ul {
 
 li {
     margin: 0 0 0.25em 0;
+    font-size: 13px;
 }
 
 body.rtl ul, body.rtl ol {
@@ -462,7 +464,7 @@ h6 {
 }
 .post-title{
     font-family: 'Times New Roman', Times, serif;
-    font-size: 1.6em;
+    font-size: 1.45em;
     font-weight: normal;
     line-height: 120%;
     margin: 0;
@@ -562,6 +564,9 @@ a:hover {
 
 /*  Widget Control
 -------------------*/
+.widget li{
+    font-size: 12.5px;
+}
 
 
 
