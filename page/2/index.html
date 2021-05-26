@@ -14,7 +14,7 @@
 <script src="/path/to/highlight.min.js"></script>
 
 <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism-vs.css" type="text/css"></head>
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
         <header class="header">
@@ -240,7 +240,7 @@
             <p>For this article, I will mainly demonstrate the definition of stopping time, optional time and hitting time and their propertities.</p>
 <h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>For a measurable space $(\Omega,\mathcal{F})$ equipped with a filtration $\{\mathcal{F}_t\}$<br>a random time $T$ is a <u><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Stopping_time">Stopping time</a></u> of the filtration if $\{w,T(w)\leq t\} \in \mathcal{F}_t$ for every $t \geq 0$;<br>a random time $T$ is a Optional time of the filtration if $\{w,T(w)&lt; t\} \in \mathcal{F}_{t}$ for every $t \geq 0$.</p>
 <p><strong>Remark</strong>: Every stopping time is optimal and the two concepts concide if the filtration is right-continuous. Since $\{T&lt;t \}=\cup_{n=1}^{\infty} \{ T\leq t-(1/n) \} \in \mathcal{F_t}$, so the stopping time is optional. For the next claim, suppose $T$ is a optional time and the filtration is right-continuous, then for every positive integer $m$, we have $\{T\leq t\} = \cap_{n=m}^{\infty} \{ T &lt; t+(1/n)\} \in \mathcal{F}_{t+\frac{1}{m}}$, therefore $\{T\leq t\}\in \mathcal{F}_{t^{+}} = \mathcal{F}_{t} $. </p>
-<p>Now, consider a stochastic process $X$ with right-continuous paths, which is adapted to a filtration $\{\mathcal{F}_t\}$. For $\Gamma \in \mathcal{B}(\mathbb{R}^d)$ of the state space, we could define the <u><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hitting_time">Hitting time</a></u> as follows: <script type="math/tex">H_{\Gamma}(w)= \inf\{t\geq 0; X_t(w)\in \Gamma\}</script>.<br>
+<p>Now, consider a stochastic process $X$ with right-continuous paths, which is adapted to a filtration $\{\mathcal{F}_t\}$. For $\Gamma \in \mathcal{B}(\mathbb{R}^d)$ of the state space, we could define the <u><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hitting_time">Hitting time</a></u> as follows: <script type="math/tex">H_{\Gamma}(w)= \inf\{t\geq 0; X_t(w)\in \Gamma\}</script>.<br></p>
             
     </div>
 

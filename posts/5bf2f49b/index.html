@@ -14,7 +14,7 @@
 <script src="/path/to/highlight.min.js"></script>
 
 <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism-vs.css" type="text/css"></head>
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
         <header class="header">
@@ -90,7 +90,7 @@
 <script type="math/tex; mode=display">
 \mathcal{F}_S \subseteq \mathcal{F}_t \subseteq \mathcal{F} \text{ for all } 0\leq s \leq t <\infty</script><p>Given a filtration$\mathcal{F}_t$, we could add a last member to it by defining:</p>
 <script type="math/tex; mode=display">\mathcal{F}_{\infty}=\sigma(\bigcup_{0\leq t<\infty} \mathcal{F}_t)</script><p>A stochastic process $X=\{X_t, t\in \mathbb{R}^{+}\}$ is adapted to the filtration $\{\mathcal{F}_t\}$ if $X_t$ is $\mathcal{F}_t$-measurable for $0\leq t \leq \infty$. The smallest filtration that one process adapted to is thef filtration that it generates, i.e.</p>
-<script type="math/tex; mode=display">\mathcal{F}_{t}^{X}=\sigma\{X_s:0\leq s \leq t\}</script><a id="more"></a>
+<script type="math/tex; mode=display">\mathcal{F}_{t}^{X}=\sigma\{X_s:0\leq s \leq t\}</script><span id="more"></span>
 <p>For random variables $X$ and $Y$, we have the definition that $X=Y$ a.s., that is $X=Y$ with probability one (or they are equal except on the events of probability zero). Similarily, we have such relaxation for stochastic processes. Let $\{X_t,t\in \mathbb{R}^{+}\}$ and $\{Y_t,t\in \mathbb{R}^{+}\}$, we say X and Y are <em>indistinguishable</em> if there exists an event $\Omega_0 \subseteq \Omega$ such that $P(\Omega_0)=1$ and for each $w\in\Omega_0$, $X_t(w)=Y_t(w)$ for all $t\in \mathbb{R}^{+}$. Another weak notion is the modification, we say: $Y$ is a <em>modification</em> of $X$ if for each $t$, $P(X_t=Y_t)=1$.</p>
 <p>According the definition of indistinguishable, we know that such two stochastic processes have almost all paths. In fact, indistinguishable processes should really be viewed as one and the same procees.</p>
 <p>All the stochastic processes we study will have some regularity properties as function of $t$ for each fixed $w$, i.e. regularity properties for paths. A stochastic process $\{X_t,t\in \mathbb{R}^{+}\}$ is said to <em>continuous</em> if for each $w\in \Omega$, the path $t\mapsto X_t(w)$ is continuous as a function of $t$. An $\mathbb{R}^{d}$-valued process $X$ is <em>right-continuous with left limits</em> (shortly RCLL, also named “cadlag” in French) if for all $w\in \Omega$:</p>
@@ -100,7 +100,7 @@
 </ul>
 <p>Similarily,we could define <em>left-continuous with right limits</em> (shortly LCRL, also named “caglad” in French).</p>
 <p>Next two lemmas show some technical benefits of path regularity.</p>
-<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Lemma 1</b><br><br>Let $X$ be adapted to the filtration $\{\mathcal{F}_t\}$ and suppose $X$ either left- or right- continuous. Then $X$ is <a href="">progressively measurable</a>. </p>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Lemma 1</b><br><br>Let $X$ be adapted to the filtration $\{\mathcal{F}_t\}$ and suppose $X$ either left- or right- continuous. Then $X$ is <a href>progressively measurable</a>. </p>
 </div>
 <p>Before we prove Lemma 1, we give the definiton of “measurable” and “<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Progressively_measurable_process">progressively measurable</a>“. </p>
 <ul>

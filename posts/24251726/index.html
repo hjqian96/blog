@@ -14,7 +14,7 @@
 <script src="/path/to/highlight.min.js"></script>
 
 <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism-vs.css" type="text/css"></head>
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
         <header class="header">
@@ -86,7 +86,7 @@
     <div id="article">
         
             <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>This article I will demonstrate the definition of expectation of a random variable and state three very important Theorems (Lemma), i.e. Monotone Convergence Theorem, Fatou’s Lemma and Dominated Convergence Theorem.</p>
-<a id="more"></a>
+<span id="more"></span>
 <p><center>Part I</center></p>
 <hr>
 <p>At first, we will start with the simple case, that is when $\xi$ is a simple random variable ($\xi$ only takes finite many values).<br>Let $(\Omega, \mathcal{F},P)$ be a finite probability space and $\xi$ is a simple random variable, i.e. $\xi=\sum_{k=1}^{n}x_kI_{A_k}(w)$, then we define</p>
@@ -139,7 +139,7 @@ E\xi_n \geq E(\eta -\varepsilon) I_{A_n} =E\eta I_{A_n} -\varepsilon P(A_n)
 <li>Let $\eta$ be any random variable with $E\eta &gt;-\infty$, if $E\eta =\infty$, then $E\xi_n=E\xi=\infty$. If $E\eta &lt;\infty$, then it is clear that $0\leq \xi_n-\eta \leq \xi-\eta$ for $w\in \Omega$, therefore we have $E(\xi_n-\eta) \uparrow E(\xi-\eta)$. Consequently we have $E\xi_n \uparrow E\xi$ due to $E\eta &lt;\infty$.</li>
 </ul>
 <div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b> Fatou’s Lemma: </b><br><br>(a) If $\xi_n\geq \eta$ for all $n\geq 1$, $E\eta &gt;-\infty$, then </p>
-<script type="math/tex; mode=display">E \varliminf \xi_n \leq \varliminf E\xi_n</script><p><br/><br>(b) If $\lvert \xi_n\rvert \leq \eta$ for all $n\geq 1$ and $E\eta &lt;\infty$, then </p>
+<script type="math/tex; mode=display">E \varliminf \xi_n \leq \varliminf E\xi_n</script><p><br><br>(b) If $\lvert \xi_n\rvert \leq \eta$ for all $n\geq 1$ and $E\eta &lt;\infty$, then </p>
 <script type="math/tex; mode=display">E\varliminf \xi_{n} \leq \varliminf E\xi_n \leq \varlimsup E \xi_{n} \leq E\varlimsup \xi_{n}</script></div>
 <p>Proof: <br><br>(a)Let $\zeta_n=\inf_{m\geq n} \xi_m$, then </p>
 <script type="math/tex; mode=display">

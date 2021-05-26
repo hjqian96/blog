@@ -14,7 +14,7 @@
 <script src="/path/to/highlight.min.js"></script>
 
 <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism-vs.css" type="text/css"></head>
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
         <header class="header">
@@ -88,7 +88,7 @@
             <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>For this article, I will mainly demonstrate the definition of stopping time, optional time and hitting time and their propertities.</p>
 <h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>For a measurable space $(\Omega,\mathcal{F})$ equipped with a filtration $\{\mathcal{F}_t\}$<br>a random time $T$ is a <u><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Stopping_time">Stopping time</a></u> of the filtration if $\{w,T(w)\leq t\} \in \mathcal{F}_t$ for every $t \geq 0$;<br>a random time $T$ is a Optional time of the filtration if $\{w,T(w)&lt; t\} \in \mathcal{F}_{t}$ for every $t \geq 0$.</p>
 <p><strong>Remark</strong>: Every stopping time is optimal and the two concepts concide if the filtration is right-continuous. Since $\{T&lt;t \}=\cup_{n=1}^{\infty} \{ T\leq t-(1/n) \} \in \mathcal{F_t}$, so the stopping time is optional. For the next claim, suppose $T$ is a optional time and the filtration is right-continuous, then for every positive integer $m$, we have $\{T\leq t\} = \cap_{n=m}^{\infty} \{ T &lt; t+(1/n)\} \in \mathcal{F}_{t+\frac{1}{m}}$, therefore $\{T\leq t\}\in \mathcal{F}_{t^{+}} = \mathcal{F}_{t} $. </p>
-<p>Now, consider a stochastic process $X$ with right-continuous paths, which is adapted to a filtration $\{\mathcal{F}_t\}$. For $\Gamma \in \mathcal{B}(\mathbb{R}^d)$ of the state space, we could define the <u><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hitting_time">Hitting time</a></u> as follows: <script type="math/tex">H_{\Gamma}(w)= \inf\{t\geq 0; X_t(w)\in \Gamma\}</script>.<br><a id="more"></a></p>
+<p>Now, consider a stochastic process $X$ with right-continuous paths, which is adapted to a filtration $\{\mathcal{F}_t\}$. For $\Gamma \in \mathcal{B}(\mathbb{R}^d)$ of the state space, we could define the <u><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hitting_time">Hitting time</a></u> as follows: <script type="math/tex">H_{\Gamma}(w)= \inf\{t\geq 0; X_t(w)\in \Gamma\}</script>.<br><span id="more"></span></p>
 <h3 id="Some-Propertities-of-Stopping-time"><a href="#Some-Propertities-of-Stopping-time" class="headerlink" title="Some Propertities of Stopping time"></a>Some Propertities of Stopping time</h3><div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Lemma 1</b>: If $T$ is optional and $\theta &gt;0$ constant, then $T+\theta$ is a stopping time.</p>
 </div>
 <p><strong>Proof:</strong>  If $0\leq t&lt;\theta$, then $\{T+\theta &lt;t\}$ is empty, which is in $\mathcal{F}_t$; if $t\geq \theta$, then $\{T+\theta &lt; t\}=\{T&lt; t-\theta\}\in\mathcal{F}_{(t-\theta)^{+}}\subseteq\mathcal{F}_t$.</p>
@@ -114,8 +114,8 @@
 <script type="math/tex; mode=display">
 \mathcal{F_T}=\left\{ A \in \mathcal{F} \,|\, A\cap \{T\leq t\} \in \mathcal{F}_t, \text{ for } t\geq 0 \right\}</script><div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b>Lemma 4</b>: For any two stopping times $T$ and $S$ and $X$ a process,</p>
 <ol>
-<li>For any $A\in \mathcal{F}_S$, we have $A\cap\{S\leq T\}$ and $A\cap \{ S&lt; T \}$ lie in $\mathcal{F}_T$. In particular, if $S\leq T$, we have $\mathcal{F}_S \subseteq \mathcal{F}_T$;<br><br/></li>
-<li>Both $T$ and $T\wedge S$ are $\mathcal{F}_T$-measurable and $\mathcal{F}_{T\wedge S}=\mathcal{F}_{T}\cap \mathcal{F}_{S}$. Also each of the events $\{T&lt; S\}, \{S&lt; T\}, \{T\leq S\}, \{S \leq T\}, \{T=S\}$ belongs to $\mathcal{F}_T\cap\mathcal{F}_S$;<br><br/></li>
+<li>For any $A\in \mathcal{F}_S$, we have $A\cap\{S\leq T\}$ and $A\cap \{ S&lt; T \}$ lie in $\mathcal{F}_T$. In particular, if $S\leq T$, we have $\mathcal{F}_S \subseteq \mathcal{F}_T$;<br><br></li>
+<li>Both $T$ and $T\wedge S$ are $\mathcal{F}_T$-measurable and $\mathcal{F}_{T\wedge S}=\mathcal{F}_{T}\cap \mathcal{F}_{S}$. Also each of the events $\{T&lt; S\}, \{S&lt; T\}, \{T\leq S\}, \{S \leq T\}, \{T=S\}$ belongs to $\mathcal{F}_T\cap\mathcal{F}_S$;<br><br></li>
 <li>If the process $X$ is <a href="progressively measurable process">progressively measurable</a> then $X(T)$ is $\mathcal{F}_T$-measurable on the event $\{T&lt;\infty\}$.</li>
 </ol>
 </div>

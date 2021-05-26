@@ -14,7 +14,7 @@
 <script src="/path/to/highlight.min.js"></script>
 
 <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism-vs.css" type="text/css"></head>
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
         <header class="header">
@@ -96,11 +96,11 @@ P_{\xi}(B)=P\{w: \xi(w)\in B\},\quad B\in \mathscr{B}(\mathbb{R})</script><p>is 
 </div>
 <div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b> Definition 3: </b> <br><br>    The function <script type="math/tex">F_{\xi}(x)=P\{w: \xi(w)\leq x\}, \quad x\in \mathbb{R}</script><br>    is called the <em>distribution fucntion </em> of $\xi$.</p>
 </div>
-<a id="more"></a>
+<span id="more"></span>
 <p>To estabilish that $\xi(w)$ is a random variable, we have to verify property $(1)$ for every $B\in\mathscr{B}(\mathbb{R})$. The following lemma shows that the class of such “test” sets can be narrowed.</p>
 <div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b> Lemma 1 </b><br>Let $\mathscr{E}$ be a system of sets such that $\sigma(\mathscr{E})=\mathscr{B}(\mathbb{R})$. Then $\xi=\xi(w)$ is $\mathscr{F}$-mesaurable $\Leftrightarrow $ $\{w:\xi(w)\in E\} \in \mathscr{F}$ for all $E\in \mathscr{E}$.</p>
 </div>
-<p>Proof:<br/></p>
+<p>Proof:<br></p>
 <ul>
 <li>The necessity(“$\Rightarrow$”) is obvious;</li>
 <li>For the sufficient part, we will use <strong>the principle of appropriate sets</strong> (the appropriate sets are sets satisfying the property we would like to prove).<br>Let $\mathscr{D}=\{D: D\in \mathscr{B}(\mathbb{R}) \text{ satisfying } \xi^{-1}(D)\in \mathscr{F}\}$. we could easily show that the operation “form the inverse image” preserve the set theoretic  operations of union, intersection and complement: i.e.<script type="math/tex; mode=display">
@@ -121,27 +121,27 @@ P_{\xi}(B)=P\{w: \xi(w)\in B\},\quad B\in \mathscr{B}(\mathbb{R})</script><p>is 
 <p>Now, we know what’s random variable. The next thing we are going to do is to testifty wether a random variable under some operations still be random variable.<br></p>
 <div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b> Lemma 2 </b> <br><br>    Let $\varphi=\varphi(x)$ be a Borel function and $\xi$ be a random variable, then<br>    $\eta(w)=\varphi(\xi(w))$ is also a random variable.</p>
 </div>
-<p>Proof:<br/></p>
+<p>Proof:<br></p>
 <p>For any $B\in\mathscr{B}(\mathbb{R})$,</p>
 <script type="math/tex; mode=display">
 \{w:\eta(w)\in B\} =\{w:\varphi(\xi(w))\in B\}=\{w: \xi(w)\in\varphi^{-1}(B)\} \in\mathscr{F}</script><p>since $\varphi$ is Borel function, so $\varphi^{-1}(B)\in\mathscr{B}(\mathbb{R})$.</p>
 <p>If $\xi$ is a random variable, so are $\xi^{n}, \xi^{+}, \xi^{-}, \lvert\xi\rvert$. If $\{\xi_k\}$ is a collection of random variables, so are $\sum_{k=1}^{\infty} \lvert \xi_k\rvert, \varlimsup\xi_k,\varliminf \xi_k$.</p>
-<p>The next theorem is vital important, it shows that we can approximate any random variable by simple random variables. This is the fundation to construct Lebesgue integral.<br/></p>
-<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b> Theorem 1 </b> <br/><br>    (a) For every random variable $\xi=\xi(w)$ (extended ones included i.e. $\xi\in [-\infty,+\infty]$), there exists a sequence of random variables $\{\xi_n\}$ s.t. $\lvert\xi_n\rvert \leq \lvert\xi\rvert$ and $\xi_n(w)\rightarrow\xi(w), n\rightarrow\infty$ for all $w\in \Omega$.<br/><br>    (b) If for a nonnegative random variable $\xi(w)\geq 0$, there exists a sequence of random variables $\{\xi_n\}$ s.t. $\xi_n(w)\uparrow \xi(w)$.</p>
+<p>The next theorem is vital important, it shows that we can approximate any random variable by simple random variables. This is the fundation to construct Lebesgue integral.<br></p>
+<div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b> Theorem 1 </b> <br><br>    (a) For every random variable $\xi=\xi(w)$ (extended ones included i.e. $\xi\in [-\infty,+\infty]$), there exists a sequence of random variables $\{\xi_n\}$ s.t. $\lvert\xi_n\rvert \leq \lvert\xi\rvert$ and $\xi_n(w)\rightarrow\xi(w), n\rightarrow\infty$ for all $w\in \Omega$.<br><br>    (b) If for a nonnegative random variable $\xi(w)\geq 0$, there exists a sequence of random variables $\{\xi_n\}$ s.t. $\xi_n(w)\uparrow \xi(w)$.</p>
 </div>
 <p>Proof:</p>
 <p>(b) For $n=1,2,\cdots$, Let</p>
 <script type="math/tex; mode=display">
-\xi_n(w)=\sum_{k=1}^{n2^{n}} \frac{k-1}{2^n} I_{k,n}(w) +nI_{\xi(w)\geq n}(w)</script><p>where $I_{k,n}(w)=I_{(k-1)/2^n\leq \xi(w)\leq k/2^n}$.<br/><br>The so have $\xi_n(w)\uparrow \xi(w)$.<br/><br>For the general case in (a), since $\xi=\xi^{+}-\xi^{-}$, we could use simple random variables to approximate $\xi^{+}, \xi^{-}$ resepctively. Finally, we could use simple random variables to approxiamte $\xi$.</p>
+\xi_n(w)=\sum_{k=1}^{n2^{n}} \frac{k-1}{2^n} I_{k,n}(w) +nI_{\xi(w)\geq n}(w)</script><p>where $I_{k,n}(w)=I_{(k-1)/2^n\leq \xi(w)\leq k/2^n}$.<br><br>The so have $\xi_n(w)\uparrow \xi(w)$.<br><br>For the general case in (a), since $\xi=\xi^{+}-\xi^{-}$, we could use simple random variables to approximate $\xi^{+}, \xi^{-}$ resepctively. Finally, we could use simple random variables to approxiamte $\xi$.</p>
 <p><center>Part II Random variables</center></p>
 <hr>
 <p>Before we preceed to random elements, we consider set $\{w:\xi(w)\in B\}$ for all $B\in \mathscr{B}(\mathbb{R})$. We could verify that such sets could form a $\sigma$-algebra called <strong>$\sigma$-algebra generated by $\xi$</strong> denoted by $\mathscr{F}_{\xi}$.</p>
-<p>In the previous Lemma 2, we show that $\varphi(\xi(w))$ is a random variable if $\varphi(x)$ is a Borel function. Now, we are able to say that the converse is true for $\mathscr{F}_{\xi}$ random variable.<br/></p>
+<p>In the previous Lemma 2, we show that $\varphi(\xi(w))$ is a random variable if $\varphi(x)$ is a Borel function. Now, we are able to say that the converse is true for $\mathscr{F}_{\xi}$ random variable.<br></p>
 <div class="alert alert-info"><i class="fa fa-info  float-left"></i>  <p><b> Theorem 2 </b> <br><br>   Let $\eta$ be a $\mathscr{F}_{\xi}$ random variable. Then there exists a Borel function $\varphi(x)$ s.t. $\eta=\varphi(\xi(w))$ for every $w\in \Omega$.</p>
 </div>
 <p><strong>Proof</strong>:</p>
 <p>Let $\Phi^{\xi}=\{\eta(w):\eta \text{ is } \mathscr{F}_{\xi}\text{-measurable}\}$ and $\tilde{\Phi}_{\xi} =\{\eta(w): \eta \text{ is }\mathscr{F}_{\xi}\text{-measurable and } \eta=\varphi(\xi(w)), \text{ where }\varphi \text{ is a Borel function } \}$, i.e. the class of $\mathscr{F}_{\xi}$-measurable functions represened in the form of $\varphi(\xi)$ where $\varphi$ is a Borel function. Therefore, $\tilde{\Phi}_{\xi} \subseteq \Phi^{\xi}$. Hence it’s sufficient to prove that $\Phi^{\xi} \subseteq \tilde{\Phi}_{\xi}$.</p>
-<p><strong>Step 1</strong>: The first step is to prove that the indicator funtion $I_{A}(w) \in \Phi^{\xi}$ for every $A \in \mathscr{F}_{\xi}$. so we let $A\in \mathscr{F}_{\xi}$ and $\eta=I_{A}(w)$, then if $A\in \mathscr{F}_{\xi}$, there exist a $B\in \mathscr{B}(\mathbb{R})$ such that $A=\{w:\xi(w)\in B\}$. So <br/><br>we let </p>
+<p><strong>Step 1</strong>: The first step is to prove that the indicator funtion $I_{A}(w) \in \Phi^{\xi}$ for every $A \in \mathscr{F}_{\xi}$. so we let $A\in \mathscr{F}_{\xi}$ and $\eta=I_{A}(w)$, then if $A\in \mathscr{F}_{\xi}$, there exist a $B\in \mathscr{B}(\mathbb{R})$ such that $A=\{w:\xi(w)\in B\}$. So <br><br>we let </p>
 <script type="math/tex; mode=display">
 \chi_B(x)=
 \begin{cases}
