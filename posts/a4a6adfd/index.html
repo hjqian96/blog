@@ -14,7 +14,7 @@
 <script src="/path/to/highlight.min.js"></script>
 
 <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism-vs.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
         <header class="header">
@@ -91,58 +91,55 @@
 <ul>
 <li>在 themes/modernist/layout/_partial/post/ 文件夹中新建 navi.ejs 文件, 添加以下代码：</li>
 </ul>
-<pre class=" language-lang-javascript"><code class="language-lang-javascript"><% if (page.prev || page.next)&#123; %>
-<div class="navi clearfix">
-  <% if (page.prev)&#123; %>
-    <a href="<%- config.root %><%- page.prev.path %>" class="alignleft prev" title="<%= page.prev.title %>"><%= page.prev.title %></a>
-  <% &#125; %>
-  <% if (page.next)&#123; %>
-    <a href="<%- config.root %><%- page.next.path %>" class="alignright next" title="<%= page.next.title %>"><%= page.next.title %></a>
-  <% &#125; %>
-</div>
-<% &#125; %>
-</code></pre>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>page<span class="token punctuation">.</span>prev <span class="token operator">||</span> page<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"navi clearfix"</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>page<span class="token punctuation">.</span>prev<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"&lt;%- config.root %>&lt;%- page.prev.path %>"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"alignleft prev"</span> title<span class="token operator">=</span><span class="token string">"&lt;%= page.prev.title %>"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">%=</span> page<span class="token punctuation">.</span>prev<span class="token punctuation">.</span>title <span class="token operator">%</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">&#125;</span> <span class="token operator">%</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>page<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"&lt;%- config.root %>&lt;%- page.next.path %>"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"alignright next"</span> title<span class="token operator">=</span><span class="token string">"&lt;%= page.next.title %>"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">%=</span> page<span class="token punctuation">.</span>next<span class="token punctuation">.</span>title <span class="token operator">%</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">&#125;</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">&#125;</span> <span class="token operator">%</span><span class="token operator">></span></code></pre>
 <ul>
 <li>在 themes/modernist/layout/_partial/article.ejs 中找到以下代码片段并加入刚创建的 navi</li>
 </ul>
-<pre class=" language-lang-javascript"><code class="language-lang-javascript"><% &#125; else &#123; %>
-      <%- partial('post/category') %>
-      <%- partial('post/tag') %>
-      <%# '此处是注释，加入navi 如下'%>
-      <%- partial('post/navi') %>
-      <%- partial('post/share') %>
-    <% &#125; %>
-    <div class="clearfix"></div>
-  </footer>
-</code></pre>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'post/category'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'post/tag'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span># <span class="token string">'此处是注释，加入navi 如下'</span><span class="token operator">%</span><span class="token operator">></span>
+	  <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'post/navi'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+	  <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'post/share'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+	<span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">&#125;</span> <span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"clearfix"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>footer<span class="token operator">></span></code></pre>
 <ul>
 <li>在 themes/modernist/source/css/_partial/article.styl 中添加以下 CSS代码</li>
 </ul>
-<pre class=" language-lang-javascript"><code class="language-lang-javascript">/* navi */
-  .navi
-      margin 1em 0
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/* navi */</span>
+  <span class="token punctuation">.</span>navi
+      margin <span class="token number">1</span>em <span class="token number">0</span>
       clear both
       overflow hidden
       a
         display block
         float left
-        width 50%
-        background #DEDEDE
-        text-align center
-        padding 0.4em 0
-        color #595959
-        transition background .45s color .45s
-        &:hover
+        width <span class="token number">50</span><span class="token operator">%</span>
+        background #<span class="token constant">DEDEDE</span>
+        text<span class="token operator">-</span>align center
+        padding <span class="token number">0.4</span>em <span class="token number">0</span>
+        color #<span class="token number">595959</span>
+        transition background <span class="token number">.45</span>s color <span class="token number">.45</span>s
+        <span class="token operator">&amp;</span><span class="token operator">:</span>hover
           color #fafafa
-          background #717171
-        &.prev::before
-          content "上一篇："
-          padding-right 0.5em
-        &.next::before
-          content "下一篇："
-          padding-right 0.5em
-    /*--end navi---*/
-</code></pre>
+          background #<span class="token number">717171</span>
+        <span class="token operator">&amp;</span><span class="token punctuation">.</span>prev<span class="token operator">:</span><span class="token operator">:</span>before
+          content <span class="token string">"上一篇："</span>
+          padding<span class="token operator">-</span>right <span class="token number">0.5</span>em
+        <span class="token operator">&amp;</span><span class="token punctuation">.</span>next<span class="token operator">:</span><span class="token operator">:</span>before
+          content <span class="token string">"下一篇："</span>
+          padding<span class="token operator">-</span>right <span class="token number">0.5</span>em
+    <span class="token comment">/*--end navi---*/</span></code></pre>
 <p>重新部署即可生成所需效果。</p>
 <h3 id="添加评论系统—-Disqus"><a href="#添加评论系统—-Disqus" class="headerlink" title="添加评论系统— Disqus"></a>添加评论系统— Disqus</h3><p>11/1/2020 更新</p>
 <ol>
@@ -154,43 +151,41 @@
 <ul>
 <li>在 themes/modernist/layout/_partial/post/ 文件中新建 comment.ejs 文件，添加刚才复制的JS 代码。</li>
 </ul>
-<pre class=" language-lang-javascript"><code class="language-lang-javascript"><div id="disqus_thread"></div>
-<script>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"disqus_thread"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
 
-/**
+<span class="token comment">/**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/</span>
+<span class="token comment">/*
 var disqus_config = function () &#123;
 this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
 this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 &#125;;
-*/
-(function() &#123; // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://hjqian96-1.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-&#125;)();
-</script>
-<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</code></pre>
+*/</span>
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// DON'T EDIT BELOW THIS LINE</span>
+<span class="token keyword">var</span> d <span class="token operator">=</span> document<span class="token punctuation">,</span> s <span class="token operator">=</span> d<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+s<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">'https://hjqian96-1.disqus.com/embed.js'</span><span class="token punctuation">;</span>
+s<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'data-timestamp'</span><span class="token punctuation">,</span> <span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">(</span>d<span class="token punctuation">.</span>head <span class="token operator">||</span> d<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span>noscript<span class="token operator">></span>Please enable JavaScript to view the <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"https://disqus.com/?ref_noscript"</span><span class="token operator">></span>comments powered by Disqus<span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>noscript<span class="token operator">></span>                       </code></pre>
 <ul>
 <li>在 themes/modernist/layout/_partial/article.ejs  中找到以下代码片段并加入 comment</li>
 </ul>
-<pre class=" language-lang-javascript"><code class="language-lang-javascript"><% &#125; else &#123; %>
-      <%- partial('post/category') %>
-      <%- partial('post/tag') %>
-      <%# '添加 navi'%>
-      <%- partial('post/navi') %>
-      <%- partial('post/share') %>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'post/category'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'post/tag'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span># <span class="token string">'添加 navi'</span><span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'post/navi'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'post/share'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
 
-      <%# '添加 comment'%>
-      <% if (post.layout != ‘page’) &#123; %>
-      <%- partial(‘comment’) %>
-      <% &#125; %>
-    <% &#125; %>
-</code></pre>
+      <span class="token operator">&lt;</span><span class="token operator">%</span># <span class="token string">'添加 comment'</span><span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>post<span class="token punctuation">.</span>layout <span class="token operator">!=</span> ‘page’<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span>‘comment’<span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">&#125;</span> <span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">&#125;</span> <span class="token operator">%</span><span class="token operator">></span></code></pre>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">a footnote demonstration.<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>
             
     </div>
@@ -292,23 +287,8 @@ s.setAttribute('data-timestamp', +new Date());
 
     </div>
     
-<script src="../../js/main.js"></script>
+<script src="../../js/main.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
 

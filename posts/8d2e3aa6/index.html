@@ -14,7 +14,7 @@
 <script src="/path/to/highlight.min.js"></script>
 
 <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/blog/css/prism-vs.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrapper">
         <header class="header">
@@ -83,38 +83,34 @@
         
             <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>此post记录工作中用到的Python知识。</p>
 <span id="more"></span>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><h4 id="如何导入自己写的py文件"><a href="#如何导入自己写的py文件" class="headerlink" title="如何导入自己写的py文件"></a>如何导入自己写的py文件</h4><pre class=" language-lang-bash"><code class="language-lang-bash">import sys 
-sys.path.append(r'D:\')
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><h4 id="如何导入自己写的py文件"><a href="#如何导入自己写的py文件" class="headerlink" title="如何导入自己写的py文件"></a>如何导入自己写的py文件</h4><pre class="language-bash" data-language="bash"><code class="language-bash">import sys 
+sys.path.append(r&#39;D:\&#39;)
 import mymodule
-mymodule.function()
-</code></pre>
+mymodule.function() </code></pre>
 <h4 id="如何解决-Memory-Error-？"><a href="#如何解决-Memory-Error-？" class="headerlink" title="如何解决 Memory Error ？"></a>如何解决 Memory Error ？</h4><p>在程序正确的情况下，出现这种情况是分配的内存不够。在 Windows 系统下，<br><code>This PC  (right click enter to properties)-&gt; Advanced system settings  -&gt; Performance Settings -&gt; Advanced -&gt; Virtual memory (click Change)</code><br>进入到 Virtual Memory 的带动页面，可以选择一个容量够大的盘，在下面设置custom size。设置完成，点击确认一步一步退出后再重跑程序即可。</p>
 <h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><h4 id="如何求一个numpy-list-的-simple-moving-average？"><a href="#如何求一个numpy-list-的-simple-moving-average？" class="headerlink" title="如何求一个numpy list 的 simple moving average？"></a>如何求一个numpy list 的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Moving_average">simple moving average</a>？</h4><p>此处需要用到 pandas 的功能。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">list=[1,2,3,7,9]
-periods=20
-list_series=pd.Series(list)
-windows=list_series.rolling(periods)
-moving_averages=windows.mean()
-ma_list = moving_averages.tolist()
-ma_without_nans=ma_list[periods-1:]
-</code></pre>
+<pre class="language-python" data-language="python"><code class="language-python">list&#x3D;[1,2,3,7,9]
+periods&#x3D;20
+list_series&#x3D;pd.Series(list)
+windows&#x3D;list_series.rolling(periods)
+moving_averages&#x3D;windows.mean()
+ma_list &#x3D; moving_averages.tolist()
+ma_without_nans&#x3D;ma_list[periods-1:]</code></pre>
 <h3 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h3><h3 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h3><p>Jupyter notebook 如何存储数据？或者在python 中如何存储数据以便后续使用？深度学习或者数据分析中，一般会出现numpy array 和 DataFrame等数据类型，</p>
 <ul>
 <li>对于多维numpy array, 可以直接使用 <code>np.save(file=&#39;filename.npy&#39;,arr=your_data)</code></li>
 <li><p>对于DataFrame,可以创建一个HDF5文件，然后依次存储需要的数据。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">store=pd.HDFStore('fileName.h5')
-store['data1']=data1
-store['data2']=data2
-</code></pre>
+<pre class="language-python" data-language="python"><code class="language-python">store&#x3D;pd.HDFStore(&#39;fileName.h5&#39;)
+store[&#39;data1&#39;]&#x3D;data1
+store[&#39;data2&#39;]&#x3D;data2</code></pre>
 </li>
 <li><p>keras 神经网络的模型保存</p>
 </li>
 </ul>
-<pre class=" language-lang-python"><code class="language-lang-python">model.save('filename.h5',overwrite=True, include_optimizer=True)
+<pre class="language-python" data-language="python"><code class="language-python">model.save(&#39;filename.h5&#39;,overwrite&#x3D;True, include_optimizer&#x3D;True)
 # 重新加载 model
 from keras.models import load_model
-model=load_model('filename.h5')
-</code></pre>
+model&#x3D;load_model(&#39;filename.h5&#39;)</code></pre>
 <p>overwrite: 如果源文件存在，是否需要覆盖。此方法会保存模型的结构，权重，训练配置（损失函数、优化器），优化器的状态等。</p>
 <h4 id="Jupyternote-Book-快捷键"><a href="#Jupyternote-Book-快捷键" class="headerlink" title="Jupyternote Book 快捷键"></a>Jupyternote Book 快捷键</h4><p><code>command+]</code> 向右缩进<br><code>ctrl+/</code> 注释（单行或多行）<br><code>esc+F</code> 代码查找、替换和忽略输出<br><code>shift+M</code> 合并 cell</p>
 
@@ -218,23 +214,8 @@ model=load_model('filename.h5')
 
     </div>
     
-<script src="../../js/main.js"></script>
+<script src="../../js/main.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
 
